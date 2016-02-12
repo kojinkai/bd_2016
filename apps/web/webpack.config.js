@@ -1,25 +1,74 @@
-var path = require('path');
+const path              = require('path');
+const autoprefixer      = require('autoprefixer')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+const sassLoaders = [
+  'css-loader',
+  'postcss-loader',
+  'sass-loader?includePaths[]=' + path.resolve(__dirname, './app')
+]
 
 module.exports = {
-  entry: './app/app.js',
+  entry: [
+    path.normalize('es6-shim/es6-shim.min'),
+    'reflect-metadata',
+    path.normalize('zone.js/dist/zone-microtask'),
+    path.resolve('app/app')
+  ],
   output: {
-    path: path.join(__dirname, 'build'),
-    filename: 'bundle.js',
-    publicPath: '/build/'
+    path: path.resolve('build/'),
+    filename: 'app.bundle.js',
+    pathinfo: false // show module paths in the bundle, handy for debugging
   },
   module: {
     loaders: [
-      { 
-        test: /.js$/, 
-        loader: 'babel-loader',
-        include: [
-          path.resolve(__dirname, 'app'),
-        ],
-        plugins: ['transform-decorators'],
+      
+      // transpile typescript
+      {
+        test: /\.js$/,
+        loader: 'awesome-typescript',
         query: {
-            presets: ['es2015', 'stage-0']
-        }        
-      }
+          doTypeCheck: false,
+          useWebpackText: true
+        },
+        include: path.resolve('app'),
+        exclude: /node_modules/
+      },
+      
+      // remove sourcemaps from angular source
+      {
+        test: /\.js$/,
+        include: path.resolve('node_modules/angular2'),
+        loader: 'strip-sourcemap'
+      },
+      
+      // support for .html as raw text
+      { 
+        test: /\.html$/,
+        loader: 'raw-loader'
+      },
+
+      // SASS
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
+      }      
+    ],
+    noParse: [
+      /es6-shim/,
+      /reflect-metadata/,
+      /zone\.js(\/|\\)dist(\/|\\)zone-microtask/
     ]
-  }
-}
+  },
+  plugins: [
+    new ExtractTextPlugin('[name].css')
+  ],
+  postcss: [
+    autoprefixer({
+      browsers: ['last 2 versions']
+    })
+  ],  
+  resolve: {
+    extensions: ['', '.js']
+  }  
+};
