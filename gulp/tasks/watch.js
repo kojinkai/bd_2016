@@ -1,5 +1,6 @@
-var gulp = require('gulp');
+var gulp   = require('gulp');
+var config = require('../config');
 
 gulp.task('watch', function() {
-  gulp.watch('./public/css/*.scss', ['sass']);
+  gulp.watch(config.styles.src, ['sass']);
 });
