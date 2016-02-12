@@ -12,9 +12,12 @@ module.exports = {
       { 
         test: /.js$/, 
         loader: 'babel-loader',
-        exclude: 'node_modules/',
+        include: [
+          path.resolve(__dirname, 'app'),
+        ],
+        plugins: ['transform-decorators'],
         query: {
-            presets: ['es2015']
+            presets: ['es2015', 'stage-0']
         }        
       }
     ]
