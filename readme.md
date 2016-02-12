@@ -1,4 +1,5 @@
 #Welcome to boxdeluxe.io
+This is the home of boxdeluxe.io source. Boxdeluxe is the portfolio site of Lewis Nixon, Front End Engineer, digital product developer and creative technologist.
 
 ##System Dependencies
 
