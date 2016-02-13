@@ -30,7 +30,8 @@ app.use(device.capture());
 
 device.enableDeviceHelpers(app);
 
-app.use(express.static(path.join(__dirname, 'apps/web/build')));
+// app.use(express.static(path.join(__dirname, 'apps/web/build')));
+app.use(express.static(path.join(__dirname, 'apps/web/app')));
 // app.use(express.static(path.join(__dirname, 'apps/mobile/build')));
 
 app.use('/', routes);

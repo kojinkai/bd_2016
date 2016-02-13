@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {Component} from 'angular2/core';
-import 'scss/base';
+import 'stylesheets/base';
 
 @Component({
     selector: 'bd-app',

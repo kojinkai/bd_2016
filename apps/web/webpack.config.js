@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const sassLoaders = [
   'css-loader',
   'postcss-loader',
-  'sass-loader?includePaths[]=' + path.resolve(__dirname, './app')
+  'sass-loader?indentedSyntax=sass&includePaths[]=' + path.resolve(__dirname, './app')
 ]
 
 module.exports = {
@@ -16,7 +16,7 @@ module.exports = {
     path.resolve('app/app')
   ],
   output: {
-    path: path.resolve('build/'),
+    path: path.resolve('app/'),
     filename: 'app.bundle.js',
     pathinfo: false // show module paths in the bundle, handy for debugging
   },
@@ -50,7 +50,7 @@ module.exports = {
 
       // SASS
       {
-        test: /\.scss$/,
+        test: /\.sass$/,
         loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
       }      
     ],
@@ -69,6 +69,7 @@ module.exports = {
     })
   ],  
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.sass'],
+    modulesDirectories: ['app', 'node_modules']
   }  
 };
