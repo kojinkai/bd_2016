@@ -6,30 +6,32 @@
   "license": "ISC",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":  "webpack"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.0",
     "autoprefixer": "^6.3.2",
-    "css-loader": "^0.23.1",
     "es6-promise": "3.0.2",
     "es6-shim": "0.33.13",
     "extract-text-webpack-plugin": "^1.0.1",
     "ionic-framework": "2.0.0-alpha.48",
     "node-sass": "^3.4.2",
-    "postcss-loader": "^0.8.0",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.0",
-    "sass-loader": "^3.1.2",
-    "style-loader": "^0.13.0",
+    "strip-sourcemap-loader": "0.0.1",
+    "webpack": "^1.12.14",
     "zone.js": "0.5.10"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^0.15.9",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7",
     "ng-cache-loader": "0.0.15",
+    "postcss-loader": "^0.8.1",
     "raw-loader": "^0.5.1",
-    "strip-sourcemap-loader": "0.0.1",
     "typescript": "^1.7.5",
-    "webpack": "^1.12.13"
+    "webpack-dev-server": "^1.14.1"
   }
 }

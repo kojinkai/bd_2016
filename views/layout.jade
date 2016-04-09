@@ -5,13 +5,13 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
     title= title
     block css
-      link(rel='stylesheet', href='/main.css')
+      link(rel='stylesheet', href='/style.css')
   body
     block content
     block app
       
       if is_desktop || is_bot
-        script(src='/app.bundle.js')
+        script(src='bundle.js')
       
       if is_phone || is_tablet
         script(src='/phone.js')
