@@ -3,7 +3,7 @@ var jshint = require('gulp-jshint');
 var notify = require('gulp-notify');
 var config = require('../config');
 
-gulp.task('jshint-app', function() {
+gulp.task('eslint', function() {
   return gulp.src(config.scripts.client.src)
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('jshint-stylish'))

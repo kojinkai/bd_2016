@@ -18,16 +18,16 @@ var sourcemaps   = require('gulp-sourcemaps');
 var source       = require('vinyl-source-stream');
 var buffer       = require('vinyl-buffer');
 var gulpif       = require('gulp-if');
-// var uglify       = require('gulp-uglify');
+var uglify       = require('gulp-uglify');
 var rename       = require('gulp-rename');
-
-var isProduction  = global.isProd;
-var isDevelopment = global.isDev;
-
-console.log('is Prod: ' + isProduction, 'is dev: ' + isDevelopment);
 
 gulp.task('browserify', function() {
   
+  var isProduction  = global.isProd;
+  var isDevelopment = global.isDev;
+
+  console.log('is Prod: ' + isProduction, 'is dev: ' + isDevelopment);
+    
   var bundleMethod = global.isWatching ? watchify : browserify;
   
   var bundler = browserify({
