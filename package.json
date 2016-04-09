@@ -14,7 +14,6 @@
     "jade": "^1.11.0"
   },
   "devDependencies": {
-    "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.6.1"
   }
 }
