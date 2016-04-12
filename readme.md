@@ -1,9 +1,12 @@
-[![Build Status](https://travis-ci.org/kojinkai/bd_2016.svg?branch=master)](https://travis-ci.org/kojinkai/bd_2016)
+boxdeluxe.io
+============
 
-#Welcome to boxdeluxe.io
-This is the home of boxdeluxe.io source. Boxdeluxe is the portfolio site of Lewis Nixon, Front End Engineer, digital product developer and creative technologist.
+[![Build Status](https://travis-ci.org/kojinkai/bd_2016.svg?branch=master)](https://travis-ci.org/kojinkai/bd_2016) [![devDependency Status](https://david-dm.org/kojinkai/bd_2016.svg)](https://david-dm.org/kojinkai/bd_2016#info=dependencies&view=table)
 
-##System Dependencies
+#Welcome to BoxDeluxe
+This is the home of boxdeluxe.io source. BoxDeluxe is the portfolio site and development moniker of Lewis Nixon who works as a front end engineer, digital product developer and creative technologist.
+
+##Running this project
 
 ###Node & NPM, of course
 ```bash
