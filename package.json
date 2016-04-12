@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "lint": "gulp jshint"
+    "lint": "./node_modules/.bin/gulp jshint"
   },
   "dependencies": {
     "express": "^4.13.3",
