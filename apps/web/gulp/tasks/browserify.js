@@ -1,4 +1,3 @@
-
 'use strict';
 
 /* browserify task
@@ -19,16 +18,12 @@ var source       = require('vinyl-source-stream');
 var buffer       = require('vinyl-buffer');
 var gulpif       = require('gulp-if');
 var uglify       = require('gulp-uglify');
-var rename       = require('gulp-rename');
+var config       = require('../config');
 
 gulp.task('browserify', function() {
   
   var isProduction  = global.isProd;
   var isDevelopment = global.isDev;
-
-  console.log('is Prod: ' + isProduction, 'is dev: ' + isDevelopment);
-    
-  var bundleMethod = global.isWatching ? watchify : browserify;
   
   var bundler = browserify({
 
@@ -37,7 +32,7 @@ gulp.task('browserify', function() {
     fullPaths: true,
 
     // Specify the entry point of your app
-    entries: ['./app/app.js'],
+    entries: [config.entry],
 
     // Add file extentions to make optional in your requires
     extensions: ['.js'],
@@ -45,7 +40,7 @@ gulp.task('browserify', function() {
   });
 
   var transforms = [
-    { 'name': babelify, 'options': { presets: ['es2015']} }
+    { 'name': babelify, 'options': { presets: ['es2015', 'stage-0']} }
   ];
 
   transforms.forEach(function(transform) {
@@ -75,20 +70,19 @@ gulp.task('browserify', function() {
 
       // if production is passed to as a CLI argument
       .pipe(gulpif(isProduction, uglify()))                    // <- prod task
-      .pipe(gulpif(isProduction, gulp.dest('./build')))        // <- prod task
+      .pipe(gulpif(isProduction, gulp.dest(config.buildDir)))  // <- prod task
 
       // writes map from browserify file if dev environment passed
       .pipe(gulpif(isDevelopment, sourcemaps.write('./')))
 
       // Specify the output destination
-      .pipe(gulp.dest('./app/build'))
+      .pipe(gulp.dest(config.scripts.dest))
 
       // Log when bundling completes!
       .on('end', bundleLogger.end);
   };
 
   if (global.isWatching) {
-
     // Rebundle with watchify on changes.
     bundler = watchify(bundler);
     bundler.on('update', bundle);

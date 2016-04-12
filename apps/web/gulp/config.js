@@ -1,23 +1,22 @@
 module.exports = {
+  
+  browserPort: 3001,
+  UIPort: 3002,
+  testPort: 3003,
+
+  sourceDir: './app/',
+  buildDir: './build/',
+  entry: './app/app.js',
+
   styles: {
-    src:  './scss/**/*.scss',
-    dest: './clientlibs-site/css'
+    src:  ['./app/components/**/*.scss', './app/stylesheets'],
+    dest: '../build/styles',
+    sassIncludePaths: []
   },
+
   scripts: {
-    client: {
-      src: ['./app/**/*.js'],
-      dest: './clientlibs-site/js'
-    },
-    gulp: {
-      src: './gulp/**'
-    },
-    concat: {
-      src: [
-        './bower_components/jquery/jquery.js',
-        './js/polyfills/*.js',
-        './js/plugins/*.js',
-        './js/app.js'
-      ]
-    }
+    src: './app/**/*.js',
+    dest: './build/js',
+    gulp: './gulp/**'
   }
 };

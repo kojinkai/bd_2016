@@ -1,12 +1,20 @@
+'use strict';
+
 var gulp   = require('gulp');
-var jshint = require('gulp-jshint');
+var eslint = require('gulp-eslint');
 var notify = require('gulp-notify');
 var config = require('../config');
 
-gulp.task('eslint', function() {
-  return gulp.src(config.scripts.client.src)
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'))
-    .pipe(notify({ message: 'JSHint app complete' }));
+gulp.task('eslint', function () {
+
+  return gulp.src([config.scripts.src, '!node_modules/**'])
+
+    .pipe(eslint('.eslintrc'))
+
+    .pipe(eslint.format())
+
+    .pipe(eslint.failAfterError())
+
+    .pipe(notify({ message: 'eslint tasks complete' }));
+
 });

@@ -3,26 +3,17 @@
 var gulp   = require('gulp');
 var config = require('../config');
 
-gulp.task('watch', ['browserSync'], function() {
+gulp.task('watch', function() {
   
   global.isWatching = true;
 
   // Styles
-  // gulp.watch('./app/scss/**', ['sass', 'modernizr']);
+  gulp.watch(config.styles.src, ['styles']);
 
   // Client JavaScripts
-  gulp.watch([config.scripts.client.src], ['eslint']);
+  gulp.watch(config.scripts.src, ['eslint']);
 
   // Gulp Automation JavaScripts
-  // gulp.watch('./gulp/**', ['jshint-gulp', 'jscs']);
-
-  // Views
-  // gulp.watch(['./app/templates/**/*.{html, js}', './app/scripts/ractives/**/*.{html, ract}'], ['browserify']);
-
-  // Images
-  // gulp.watch('./app/assets/images/**', ['images']);
-
-  // Front End Dependencies
-  // gulp.watch('bower.json', ['wiredep']);
+  gulp.watch(config.scripts.gulp, ['jshint']);
 
 });
